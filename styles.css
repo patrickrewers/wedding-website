@@ -34,6 +34,7 @@ header {
 
 .header-content {
     max-width: 1200px;
+    min-height: 80px;
     margin: 0 auto;
     padding: 1rem 2rem;
 }
@@ -49,6 +50,7 @@ header {
 
 .iframe-container {
   text-align:center;
+  max-width: 100%;
 }
 
 .iframe-container iframe {
@@ -77,6 +79,24 @@ nav a {
 
 nav a:hover,
 nav a.active {
+    color: var(--primary-color);
+}
+
+/* Hamburger Menu Button */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: var(--text-color);
+    position: absolute;
+    right: 2rem;
+    top: 1rem;
+}
+
+.menu-toggle:hover {
     color: var(--primary-color);
 }
 
@@ -331,9 +351,37 @@ footer {
         font-size: 1.2rem;
     }
 
+    .header-content {
+        position: relative;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
     nav {
         flex-direction: column;
         align-items: center;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        width: 100%;
+    }
+
+    nav.active {
+        max-height: 500px;
+        transition: max-height 0.3s ease-in;
+    }
+
+    nav a {
+        padding: 1rem;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    nav a:last-child {
+        border-bottom: none;
     }
 
     .gallery {
